@@ -2386,3 +2386,26 @@ footer {
 .lightbox-details .highlights-list li:nth-child(5),
 .lightbox-details .responsibilities-list li:nth-child(5) { animation-delay: 0.5s; }
   
+/* Remove all h4::after pseudo-elements */
+.lightbox-highlights h4::after,
+.lightbox-responsibilities h4::after,
+.lightbox-details .lightbox-highlights h4::after,
+.lightbox-details .lightbox-responsibilities h4::after,
+.lightbox-modal .lightbox-content .lightbox-details .lightbox-highlights h4::after,
+.lightbox-modal .lightbox-content .lightbox-details .lightbox-responsibilities h4::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Clean base styling for headers */
+.lightbox-details .lightbox-highlights h4,
+.lightbox-details .lightbox-responsibilities h4 {
+  color: #ff4747;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 71, 71, 0.3);
+  width: 100%;
+  text-align: left;
+}
+  
