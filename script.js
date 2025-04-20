@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'Zain E-sports Marvel Rivals Tournament': {
       highlights: [
-        '13 participating teams',
+        '16 participating teams',
         'Professional production setup',
         'Live-streamed on Twitch',
         'Bracket hosted on Challonge',

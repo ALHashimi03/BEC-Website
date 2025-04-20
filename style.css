@@ -428,6 +428,29 @@
   text-align: center !important;
   position: relative !important;
   display: inline-block !important;
+  padding-bottom: 20px !important;
+}
+
+.section-title::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 60% !important;
+  height: 3px !important;
+  background: #ff4747 !important;
+  border-radius: 2px !important;
+}
+
+/* Override for light sections */
+.about-section .section-title {
+  color: #212529 !important;
+}
+
+/* Override for dark sections */
+.events-section .section-title {
+  color: #fff !important;
 }
 
 /* About Section - Dynamic Sizing */
@@ -1627,6 +1650,8 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
@@ -1634,324 +1659,50 @@ footer {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 0 clamp(40px, 10vw, 200px);
+  padding: 0;
+  margin: 0;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .lightbox-content {
   position: relative;
   max-width: 1200px;
-  width: 100%;
+  width: calc(100% - 40px); /* Account for padding */
   margin: 2rem auto;
   background: #1a1a1a;
-  padding: clamp(2rem, 4vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 4rem);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
-  max-height: 90vh;
+  max-height: calc(100vh - 4rem);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .lightbox-modal {
-    padding: 0 clamp(20px, 5vw, 40px);
-  }
-  
-  .lightbox-content {
-    padding: clamp(1.5rem, 3vw, 2rem);
-  }
+/* Hide scrollbars but keep functionality */
+.lightbox-modal::-webkit-scrollbar,
+.lightbox-content::-webkit-scrollbar {
+  display: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .lightbox-modal {
-    padding: 0 20px;
+    padding: 0;
   }
   
   .lightbox-content {
+    width: calc(100% - 20px);
+    margin: 1rem auto;
     padding: 1rem;
-  }
-}
-
-/* Close button styles */
-.close-lightbox {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1001;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: center;
-  animation: fadeIn 0.3s ease-out;
-  text-decoration: none;
-}
-
-.close-lightbox::before,
-.close-lightbox::after {
-  content: '';
-  position: absolute;
-  width: 24px;
-  height: 2px;
-  background-color: #fff;
-  transition: all 0.3s ease;
-}
-
-.close-lightbox::before {
-  transform: rotate(45deg);
-}
-
-.close-lightbox::after {
-  transform: rotate(-45deg);
-}
-
-.close-lightbox:hover {
-  background: rgba(255, 71, 71, 0.9);
-  transform: rotate(90deg) scale(1.1);
-  border-color: rgba(255, 71, 71, 0.9);
-  box-shadow: 0 0 20px rgba(255, 71, 71, 0.5);
-}
-
-.close-lightbox:hover::before,
-.close-lightbox:hover::after {
-  background-color: #fff;
-  width: 28px;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .lightbox-content .close-lightbox {
-    width: 40px;
-    height: 40px;
-    top: 15px;
-    right: 15px;
-  }
-  
-  .lightbox-content .close-lightbox::before,
-  .lightbox-content .close-lightbox::after {
-    width: 20px;
-  }
-  
-  .lightbox-content .close-lightbox:hover::before,
-  .lightbox-content .close-lightbox:hover::after {
-    width: 24px;
+    max-height: calc(100vh - 2rem);
   }
 }
 
 @media (max-width: 480px) {
-  .lightbox-content .close-lightbox {
-    width: 35px;
-    height: 35px;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .lightbox-content .close-lightbox::before,
-  .lightbox-content .close-lightbox::after {
-    width: 18px;
-  }
-  
-  .lightbox-content .close-lightbox:hover::before,
-  .lightbox-content .close-lightbox:hover::after {
-    width: 22px;
-  }
-}
-
-/* Lightbox Details */
-.lightbox-details {
-  color: #fff;
-  padding: 0 1rem;
-  text-align: center;
-}
-
-.lightbox-details .lightbox-title,
-.lightbox-details .lightbox-highlights h4,
-.lightbox-details .lightbox-responsibilities h4 {
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  padding-bottom: 20px;
-  margin-bottom: 2.5rem;
-}
-
-.lightbox-details .lightbox-title {
-  font-size: 2rem;
-}
-
-.lightbox-details .lightbox-highlights h4,
-.lightbox-details .lightbox-responsibilities h4 {
-  font-size: 1.3rem;
-}
-
-.lightbox-details .lightbox-title::after,
-.lightbox-details .lightbox-highlights h4::after,
-.lightbox-details .lightbox-responsibilities h4::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: #ff4747;
-  border-radius: 2px;
-}
-
-.lightbox-details .lightbox-description {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin: 2rem 0;
-  color: #ccc;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid #ff4747;
-  text-align: left;
-}
-
-.lightbox-details .lightbox-meta {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  color: #aaa;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1rem;
-  border-radius: 8px;
-  justify-content: center;
-}
-
-.lightbox-details .lightbox-highlights,
-.lightbox-details .lightbox-responsibilities {
-  margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.lightbox-details .highlights-list,
-.lightbox-details .responsibilities-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.lightbox-details .highlights-list li,
-.lightbox-details .responsibilities-list li {
-  padding: 0.8rem 0;
-  color: #ccc;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.lightbox-details .highlights-list li::before,
-.lightbox-details .responsibilities-list li::before {
-  content: '•';
-  color: #ff4747;
-  font-size: 1.5rem;
-}
-
-.lightbox-title-wrapper,
-.lightbox-subtitle-wrapper {
-  text-align: center;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-/* Modal open state */
-body.modal-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .events-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .event-image {
-    height: 180px;
-  }
-
-  .event-title {
-    font-size: 18px;
-  }
-
-  .event-description {
-    font-size: 13px;
-  }
-
-  .lightbox-title {
-    font-size: 20px;
-  }
-
-  .lightbox-description {
-    font-size: 14px;
-  }
-
-  .lightbox-highlights h4,
-  .lightbox-responsibilities h4 {
-    font-size: 16px;
-  }
-
-  .highlights-list li,
-  .responsibilities-list li {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 480px) {
-  .event-filters {
-    gap: 10px;
-  }
-
-  .filter-btn {
-    padding: 8px 15px;
-    font-size: 12px;
-  }
-
-  .events-grid {
-    grid-template-columns: 1fr;
-  }
-
   .lightbox-content {
+    width: calc(100% - 16px);
+    margin: 0.5rem auto;
+    padding: 1rem;
     margin: 20px;
   }
 
@@ -2350,4 +2101,288 @@ body.modal-open {
     width: 177.78vh;
   }
 }
+
+/* Close button styles */
+.close-lightbox {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.close-lightbox::before,
+.close-lightbox::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.close-lightbox::before {
+  transform: rotate(45deg);
+}
+
+.close-lightbox::after {
+  transform: rotate(-45deg);
+}
+
+.close-lightbox:hover {
+  background: rgba(255, 71, 71, 0.9);
+  transform: rotate(90deg) scale(1.1);
+  border-color: rgba(255, 71, 71, 0.9);
+  box-shadow: 0 0 20px rgba(255, 71, 71, 0.5);
+}
+
+.close-lightbox:hover::before,
+.close-lightbox:hover::after {
+  background-color: #fff;
+  width: 28px;
+}
+
+/* Lightbox Details */
+.lightbox-details {
+  color: #fff;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.lightbox-details .lightbox-title,
+.lightbox-details .lightbox-highlights h4,
+.lightbox-details .lightbox-responsibilities h4 {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 2.5rem;
+}
+
+.lightbox-details .lightbox-title {
+  font-size: 2rem;
+}
+
+.lightbox-details .lightbox-highlights h4,
+.lightbox-details .lightbox-responsibilities h4 {
+  font-size: 1.3rem;
+}
+
+.lightbox-details .lightbox-title::after,
+.lightbox-details .lightbox-highlights h4::after,
+.lightbox-details .lightbox-responsibilities h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: #ff4747;
+  border-radius: 2px;
+}
+
+/* Section title decorative line fix */
+.section-title {
+  position: relative !important;
+  padding-bottom: 20px !important;
+}
+
+.section-title::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 60% !important;
+  height: 3px !important;
+  background: #ff4747 !important;
+  border-radius: 2px !important;
+}
+
+/* Responsive adjustments for close button */
+@media (max-width: 768px) {
+  .close-lightbox {
+    width: 40px;
+    height: 40px;
+    top: 15px;
+    right: 15px;
+  }
+  
+  .close-lightbox::before,
+  .close-lightbox::after {
+    width: 20px;
+  }
+  
+  .close-lightbox:hover::before,
+  .close-lightbox:hover::after {
+    width: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .close-lightbox {
+    width: 35px;
+    height: 35px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .close-lightbox::before,
+  .close-lightbox::after {
+    width: 18px;
+  }
+  
+  .close-lightbox:hover::before,
+  .close-lightbox:hover::after {
+    width: 22px;
+  }
+}
+
+.lightbox-details .lightbox-highlights,
+.lightbox-details .lightbox-responsibilities {
+  margin-top: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.lightbox-details .lightbox-highlights:hover,
+.lightbox-details .lightbox-responsibilities:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(255, 71, 71, 0.15);
+  border-color: rgba(255, 71, 71, 0.3);
+}
+
+.lightbox-details .lightbox-highlights h4,
+.lightbox-details .lightbox-responsibilities h4 {
+  color: #ff4747;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 71, 71, 0.3);
+  width: 100%;
+  text-align: left;
+}
+
+.lightbox-details .highlights-list,
+.lightbox-details .responsibilities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.lightbox-details .highlights-list li,
+.lightbox-details .responsibilities-list li {
+  padding: 12px 15px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-details .highlights-list li:hover,
+.lightbox-details .responsibilities-list li:hover {
+  background: rgba(255, 71, 71, 0.1);
+  transform: translateX(5px);
+  border-color: rgba(255, 71, 71, 0.3);
+}
+
+.lightbox-details .highlights-list li::before,
+.lightbox-details .responsibilities-list li::before {
+  content: '✦';
+  color: #ff4747;
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lightbox-details .lightbox-highlights,
+  .lightbox-details .lightbox-responsibilities {
+    padding: 1.5rem;
+  }
+
+  .lightbox-details .highlights-list,
+  .lightbox-details .responsibilities-list {
+    grid-template-columns: 1fr;
+  }
+
+  .lightbox-details .lightbox-highlights h4,
+  .lightbox-details .lightbox-responsibilities h4 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lightbox-details .lightbox-highlights,
+  .lightbox-details .lightbox-responsibilities {
+    padding: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .lightbox-details .highlights-list li,
+  .lightbox-details .responsibilities-list li {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .lightbox-details .lightbox-highlights h4,
+  .lightbox-details .lightbox-responsibilities h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Add animation for list items */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.lightbox-details .highlights-list li,
+.lightbox-details .responsibilities-list li {
+  animation: fadeInLeft 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+.lightbox-details .highlights-list li:nth-child(1),
+.lightbox-details .responsibilities-list li:nth-child(1) { animation-delay: 0.1s; }
+.lightbox-details .highlights-list li:nth-child(2),
+.lightbox-details .responsibilities-list li:nth-child(2) { animation-delay: 0.2s; }
+.lightbox-details .highlights-list li:nth-child(3),
+.lightbox-details .responsibilities-list li:nth-child(3) { animation-delay: 0.3s; }
+.lightbox-details .highlights-list li:nth-child(4),
+.lightbox-details .responsibilities-list li:nth-child(4) { animation-delay: 0.4s; }
+.lightbox-details .highlights-list li:nth-child(5),
+.lightbox-details .responsibilities-list li:nth-child(5) { animation-delay: 0.5s; }
   
