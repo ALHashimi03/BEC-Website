@@ -1333,7 +1333,7 @@ footer {
 .partners-section,
 .collaborators-section {
   margin: clamp(2rem, 5vw, 4rem) auto;
-  padding: 0 clamp(40px, 10vw, 200px);
+  padding: 0 clamp(20px, 5vw, 200px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1346,6 +1346,9 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo-item {
@@ -1381,6 +1384,7 @@ footer {
   padding: 20px;
   width: 100%;
   place-items: center;
+  justify-content: center;
 }
 
 /* Partners grid - single centered card */
@@ -1418,13 +1422,23 @@ footer {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-.logo-item {
+  .partners-section,
+  .collaborators-section {
+    padding: 0 15px;
+  }
+
+  .logo-item {
     width: 200px;
     height: 200px;
   }
   
   .logo-grid {
     gap: 20px;
+    padding: 10px;
+  }
+
+  .collaborators-container {
+    padding: 10px;
   }
 }
 
@@ -1436,6 +1450,12 @@ footer {
   
   .logo-grid {
     gap: 15px;
+    padding: 5px;
+    grid-template-columns: 1fr;
+  }
+
+  .collaborators-container .logo-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1892,53 +1912,6 @@ footer {
 /* Responsive adjustments for photo grid */
 @media (max-width: 768px) {
   .photo-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Partners & Clients Section Styles */
-.partners-section,
-.collaborators-section {
-  margin: clamp(2rem, 5vw, 4rem) auto;
-  padding: 0 clamp(40px, 10vw, 200px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1600px;
-  width: 100%;
-}
-
-.subsection-title {
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem) !important;
-  color: var(--accent) !important;
-  margin-bottom: clamp(1.5rem, 3vw, 3rem) !important;
-  text-transform: uppercase !important;
-  letter-spacing: clamp(1px, 0.2vw, 3px) !important;
-  text-align: center !important;
-  position: relative !important;
-  display: inline-block !important;
-}
-
-.subsection-title::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 10%;
-  width: 80%;
-  height: 3px;
-  background: #ff4747;
-  border-radius: 2px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-  .events-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .events-grid {
     grid-template-columns: 1fr;
   }
 }
