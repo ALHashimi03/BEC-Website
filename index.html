@@ -39,8 +39,16 @@
   </header>
 
   <section id="home" class="hero">
-    <div class="youtube-container" id="youtube-container">
-      <div id="player"></div>
+    <div class="youtube-container">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/-6vZratlfHU?autoplay=1&controls=0&rel=0&showinfo=0&loop=1&playlist=-6vZratlfHU&mute=1&playsinline=1&modestbranding=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        title="Background Video"
+        width="100%"
+        height="100%"
+        style="position: absolute; top: 0; left: 0; border: none;"
+      ></iframe>
     </div>
     <div class="hero-overlay">
       <div class="hero-content">
@@ -513,78 +521,21 @@
   <!-- Cookie Consent Banner -->
   <div class="cookie-consent">
     <div class="cookie-text">
-      This website uses cookies to ensure you get the best experience and to analyze traffic. 
+      This website uses cookies to ensure you get the best experience. 
       <a href="/privacy-policy">Learn more</a>
     </div>
     <button class="accept-btn">Accept</button>
   </div>
 
-  <!-- Cookie Consent Script -->
-  <script src="cookie-consent.js"></script>
-
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="js/cc-banner.js" defer></script>
+  <script src="script.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
     (function() {
       emailjs.init("lAUSVxP_kePVrqdge");
     })();
-  </script>
-  <script>
-    // Load the IFrame Player API code asynchronously
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        videoId: '-6vZratlfHU',
-        playerVars: {
-          'autoplay': 1,
-          'controls': 0,
-          'rel': 0,
-          'showinfo': 0,
-          'loop': 1,
-          'playlist': '-6vZratlfHU',
-          'mute': 1,
-          'playsinline': 1,
-          'modestbranding': 1,
-          'enablejsapi': 1
-        },
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange,
-          'onError': onPlayerError
-        }
-      });
-    }
-
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
-
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        player.playVideo();
-      }
-    }
-
-    function onPlayerError(event) {
-      console.log('YouTube player error:', event.data);
-      // Hide the container if there's an error
-      document.getElementById('youtube-container').style.display = 'none';
-    }
-
-    // Handle visibility change to prevent video from stopping when tab is inactive
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        player.pauseVideo();
-      } else {
-        player.playVideo();
-      }
-    });
   </script>
 </body>
 </html>
