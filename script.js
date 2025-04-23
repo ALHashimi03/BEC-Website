@@ -169,12 +169,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
     const visibleCards = Array.from(eventCards).filter(card => {
       const category = card.getAttribute('data-category');
-      return (activeFilter === 'all' && category === 'tournament') || 
-             (activeFilter === category);
+      // Show all cards when "all" is selected, otherwise show only matching category
+      return activeFilter === 'all' || activeFilter === category;
     });
 
     // Hide all cards first
-    eventCards.forEach(card => card.style.display = 'none');
+    eventCards.forEach(card => {
+      card.style.display = 'none';
+    });
 
     // Show appropriate cards based on filter and expansion state
     visibleCards.forEach((card, index) => {

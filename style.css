@@ -455,14 +455,16 @@
 
 /* About Section - Dynamic Sizing */
 .about-section { 
-  background: #ffffff !important; 
-  width: 100% !important;
+  background: linear-gradient(to right, #ffffff, #949393);
+  color: #000;
+ width: 100% !important;
   max-width: none !important;
   padding: clamp(40px, 5vw, 120px) 0 !important;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #333 !important;
 }
 
 .about-section .container { 
@@ -473,7 +475,7 @@
 }
 
 .about-section .section-title {
-  color: #212529 !important;
+  color: #333 !important;
 }
 
 /* Responsive About Section */
@@ -531,12 +533,25 @@
   max-width: none !important;
   margin: 0 !important;
   border: none !important;
-  background: #333 !important;
-  color: #fff !important;
+  background: #fff !important;
+  color: #333 !important;
   padding: 20px !important;
   border-radius: 10px !important;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
   font-family: 'Poppins', sans-serif !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.card h2 {
+  color: #333 !important;
+}
+
+.card p, .card li {
+  color: #666 !important;
+}
+
+.card strong {
+  color: #ff4747 !important;
 }
 
 /* Identity Card - Override Bootstrap and restore styles */
@@ -1341,6 +1356,27 @@ footer {
   width: 100%;
 }
 
+.logo-item {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.logo-item img {
+  filter: grayscale(0);
+  transition: filter 0.3s ease;
+}
+
+.logo-item:hover img {
+  filter: grayscale(0);
+}
+
 .collaborators-container {
   width: 100%;
   max-width: 1200px;
@@ -1919,7 +1955,8 @@ footer {
 /* Stats Section Styles */
 .stats-section {
   padding: 80px 0;
-  background: #ffffff;
+  background:#1a1a1a;
+  color: #000;
   position: relative;
   overflow: hidden;
 }
@@ -2190,8 +2227,8 @@ footer {
   .close-lightbox {
     width: 40px;
     height: 40px;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
   }
   
   .close-lightbox::before,
@@ -2209,8 +2246,8 @@ footer {
   .close-lightbox {
     width: 35px;
     height: 35px;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
   }
   
   .close-lightbox::before,
@@ -2477,5 +2514,97 @@ footer {
   .cookie-text {
     font-size: 0.85rem;
   }
+}
+
+/* Base styles for all event cards with disabled buttons */
+.event-card .view-details-btn:disabled {
+  background-color: #ff6b6b;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.event-card .view-details-btn:disabled ~ .event-content {
+  opacity: 0.7;
+}
+
+.event-card .view-details-btn:disabled ~ .event-image img {
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+.event-card .view-details-btn:disabled ~ .event-image .event-overlay {
+  opacity: 0.7;
+}
+
+/* Text color styles for disabled event cards */
+.event-card .view-details-btn:disabled ~ .event-content .event-title,
+.event-card .view-details-btn:disabled ~ .event-content .event-description,
+.event-card .view-details-btn:disabled ~ .event-image .event-overlay .event-date,
+.event-card .view-details-btn:disabled ~ .event-image .event-overlay .event-location {
+  color: #fff !important;
+}
+
+/* Override category-specific text colors for disabled cards */
+.event-card[data-category="community"] .view-details-btn:disabled ~ .event-content .event-title,
+.event-card[data-category="community"] .view-details-btn:disabled ~ .event-content .event-description,
+.event-card[data-category="tournament"] .view-details-btn:disabled ~ .event-content .event-title,
+.event-card[data-category="tournament"] .view-details-btn:disabled ~ .event-content .event-description,
+.event-card[data-category="workshop"] .view-details-btn:disabled ~ .event-content .event-title,
+.event-card[data-category="workshop"] .view-details-btn:disabled ~ .event-content .event-description {
+  color: #fff !important;
+}
+
+/* Remove any conflicting text color styles */
+.event-card[data-category="community"] .event-title,
+.event-card[data-category="community"] .event-description,
+.event-card[data-category="workshop"] .event-title,
+.event-card[data-category="workshop"] .event-description {
+  color: #fff !important;
+}
+
+/* Base styles for all event cards */
+.event-card .event-title,
+.event-card .event-description,
+.event-card .event-date,
+.event-card .event-location {
+  color: #fff !important;
+}
+
+/* Styles for disabled event cards */
+.event-card .view-details-btn:disabled {
+  background-color: #ff6b6b;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.event-card .view-details-btn:disabled ~ .event-content {
+  opacity: 0.7;
+}
+
+.event-card .view-details-btn:disabled ~ .event-image img {
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+.event-card .view-details-btn:disabled ~ .event-image .event-overlay {
+  opacity: 0.7;
+}
+
+/* Override any category-specific text colors */
+.event-card[data-category="community"] .event-title,
+.event-card[data-category="community"] .event-description,
+.event-card[data-category="tournament"] .event-title,
+.event-card[data-category="tournament"] .event-description,
+.event-card[data-category="workshop"] .event-title,
+.event-card[data-category="workshop"] .event-description {
+  color: #fff !important;
+}
+
+/* Remove any conflicting styles */
+.event-card[data-category="community"] .event-title,
+.event-card[data-category="community"] .event-description,
+.event-card[data-category="workshop"] .event-title,
+.event-card[data-category="workshop"] .event-description {
+  color: #fff !important;
 }
   
