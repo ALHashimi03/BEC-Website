@@ -108,30 +108,48 @@ function hideAlert() {
     }, 300);
 }
 
+let recaptchaVerified = false;
+
+// reCAPTCHA success callback
+function onRecaptchaSuccess() {
+    recaptchaVerified = true;
+    hideRecaptchaAlert();
+}
+
+// reCAPTCHA expired callback
+function onRecaptchaExpired() {
+    recaptchaVerified = false;
+    showRecaptchaAlert();
+}
+
 // Show reCAPTCHA alert
 function showRecaptchaAlert() {
     const alert = document.getElementById('recaptchaAlert');
-    alert.style.display = 'block';
-    alert.classList.remove('hiding');
-    alert.classList.add('show');
-    
-    // Auto hide after 5 seconds
-    setTimeout(() => {
-        hideRecaptchaAlert();
-    }, 5000);
+    if (alert) {
+        alert.style.display = 'block';
+        alert.classList.remove('hiding');
+        alert.classList.add('show');
+        
+        // Auto hide after 5 seconds
+        setTimeout(() => {
+            hideRecaptchaAlert();
+        }, 5000);
+    }
 }
 
 // Hide reCAPTCHA alert
 function hideRecaptchaAlert() {
     const alert = document.getElementById('recaptchaAlert');
-    alert.classList.add('hiding');
-    
-    // Remove the alert after animation completes
-    setTimeout(() => {
-        alert.style.display = 'none';
-        alert.classList.remove('hiding');
-        alert.classList.remove('show');
-    }, 300);
+    if (alert) {
+        alert.classList.add('hiding');
+        
+        // Remove the alert after animation completes
+        setTimeout(() => {
+            alert.style.display = 'none';
+            alert.classList.remove('hiding');
+            alert.classList.remove('show');
+        }, 300);
+    }
 }
 
 // Handle Contact Form Submission
@@ -142,8 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             // Verify reCAPTCHA
-            const recaptchaResponse = grecaptcha.getResponse();
-            if (!recaptchaResponse) {
+            if (!recaptchaVerified) {
                 showRecaptchaAlert();
                 return;
             }
@@ -177,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('contactForm').reset();
                     // Reset reCAPTCHA
                     grecaptcha.reset();
+                    recaptchaVerified = false;
                 })
                 .catch(function(error) {
                     console.log('FAILED...', error);

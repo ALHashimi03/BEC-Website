@@ -441,7 +441,7 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <div id="recaptcha" class="g-recaptcha"></div>
+            <div class="g-recaptcha" data-sitekey="6LdLGCMrAAAAAM6Gx9JkRVX4M5T4jipKP-pcpFK7" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
           </div>
           <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
         </form>
@@ -550,17 +550,11 @@
   <script src="script.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
     (function() {
       emailjs.init("lAUSVxP_kePVrqdge");
     })();
-
-    var onloadCallback = function() {
-      grecaptcha.render('recaptcha', {
-        'sitekey' : '6LdLGCMrAAAAAM6Gx9JkRVX4M5T4jipKP-pcpFK7'
-      });
-    };
   </script>
 </body>
 </html>
