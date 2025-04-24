@@ -2629,3 +2629,92 @@ justify-content: center;
 align-items: center;
 width: 100%;
 }
+
+.recaptcha-alert {
+position: fixed;
+top: 20px;
+right: 20px;
+background-color: #ff4444;
+color: white;
+padding: 15px 25px;
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+display: none;
+z-index: 9999;
+animation: slideInRight 0.3s ease-out;
+max-width: 300px;
+}
+
+.recaptcha-alert.show {
+display: block;
+}
+
+.recaptcha-alert.hiding {
+animation: slideOutRight 0.3s ease-out;
+}
+
+.recaptcha-alert-content {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.recaptcha-alert-icon {
+width: 24px;
+height: 24px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.recaptcha-alert-text {
+flex: 1;
+}
+
+.recaptcha-alert-title {
+font-weight: 600;
+margin-bottom: 4px;
+}
+
+.recaptcha-alert-description {
+font-size: 0.9rem;
+opacity: 0.9;
+}
+
+.recaptcha-alert-close {
+background: none;
+border: none;
+color: white;
+cursor: pointer;
+padding: 5px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: 10px;
+}
+
+.recaptcha-alert-close:hover {
+opacity: 0.8;
+}
+
+@keyframes slideInRight {
+from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+to {
+  transform: translateX(0);
+  opacity: 1;
+}
+}
+
+@keyframes slideOutRight {
+from {
+  transform: translateX(0);
+  opacity: 1;
+}
+to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+}

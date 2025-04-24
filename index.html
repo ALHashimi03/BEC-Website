@@ -520,7 +520,27 @@
       </div>
       <button class="alert-close" onclick="hideAlert()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- reCAPTCHA Alert -->
+  <div id="recaptchaAlert" class="recaptcha-alert">
+    <div class="recaptcha-alert-content">
+      <div class="recaptcha-alert-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>
+      </div>
+      <div class="recaptcha-alert-text">
+        <p class="recaptcha-alert-title">Security Check Required</p>
+        <p class="recaptcha-alert-description">Please complete the reCAPTCHA verification to send your message.</p>
+      </div>
+      <button class="recaptcha-alert-close" onclick="hideRecaptchaAlert()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>

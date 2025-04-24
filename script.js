@@ -108,6 +108,32 @@ function hideAlert() {
     }, 300);
 }
 
+// Show reCAPTCHA alert
+function showRecaptchaAlert() {
+    const alert = document.getElementById('recaptchaAlert');
+    alert.style.display = 'block';
+    alert.classList.remove('hiding');
+    alert.classList.add('show');
+    
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+        hideRecaptchaAlert();
+    }, 5000);
+}
+
+// Hide reCAPTCHA alert
+function hideRecaptchaAlert() {
+    const alert = document.getElementById('recaptchaAlert');
+    alert.classList.add('hiding');
+    
+    // Remove the alert after animation completes
+    setTimeout(() => {
+        alert.style.display = 'none';
+        alert.classList.remove('hiding');
+        alert.classList.remove('show');
+    }, 300);
+}
+
 // Handle Contact Form Submission
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
@@ -118,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Verify reCAPTCHA
             const recaptchaResponse = grecaptcha.getResponse();
             if (!recaptchaResponse) {
-                alert('Please complete the reCAPTCHA verification');
+                showRecaptchaAlert();
                 return;
             }
             
