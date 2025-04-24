@@ -115,6 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
+            // Verify reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                alert('Please complete the reCAPTCHA verification');
+                return;
+            }
+            
             // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -142,6 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('successAlert').style.display = 'flex';
                     // Reset form
                     document.getElementById('contactForm').reset();
+                    // Reset reCAPTCHA
+                    grecaptcha.reset();
                 })
                 .catch(function(error) {
                     console.log('FAILED...', error);
