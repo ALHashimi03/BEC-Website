@@ -160,7 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             // Verify reCAPTCHA
-            if (!recaptchaVerified) {
+            try {
+                const recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse || recaptchaResponse.length === 0) {
+                    showRecaptchaAlert();
+                    return;
+                }
+            } catch (error) {
+                console.error('reCAPTCHA error:', error);
                 showRecaptchaAlert();
                 return;
             }
@@ -194,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('contactForm').reset();
                     // Reset reCAPTCHA
                     grecaptcha.reset();
-                    recaptchaVerified = false;
                 })
                 .catch(function(error) {
                     console.log('FAILED...', error);
