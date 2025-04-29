@@ -64,19 +64,19 @@
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-content">
-            <div class="stat-number">7<span class="stat-plus">+</span></div>
+            <div class="stat-number">8<span class="stat-plus">+</span></div>
             <div class="stat-label">Events Hosted</div>
           </div>
         </div>
         <div class="stat-card">
           <div class="stat-content">
-            <div class="stat-number">400<span class="stat-plus">+</span></div>
+            <div class="stat-number">600<span class="stat-plus">+</span></div>
             <div class="stat-label">Tournament Participants</div>
           </div>
         </div>
         <div class="stat-card">
           <div class="stat-content">
-            <div class="stat-number">5<span class="stat-plus">+</span></div>
+            <div class="stat-number">7<span class="stat-plus">+</span></div>
             <div class="stat-label">Games Hosted</div>
           </div>
         </div>
@@ -395,6 +395,12 @@
           <a href="https://dilmune.com/" target="_blank" rel="noopener noreferrer" class="logo-item">
             <img src="Images/logos/DelmonLogo.png" alt="dilmune Logo" class="collaborator-logo">
           </a>
+          <a href="https://www.instagram.com/dallahpromotions/" target="_blank" rel="noopener noreferrer" class="logo-item">
+            <img src="Images/logos/Dallah.png" alt="Gamers Lounge Logo" class="collaborator-logo">
+          </a>
+          <a href="https://www.instagram.com/bahraincomiccon/" target="_blank" rel="noopener noreferrer" class="logo-item">
+            <img src="Images/logos/Comicon 2025.png" alt="Gaming Club Logo" class="collaborator-logo">
+          </a>
         </div>
       </div>
     </div>
@@ -500,61 +506,18 @@
         <p>© <script>document.write(new Date().getFullYear())</script> Bahrain Esports Community. All rights reserved.</p>
       </div>
     </div>
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+      (function() {
+        emailjs.init("lAUSVxP_kePVrqdge");
+      })();
+    </script>
   </footer>
 
   <a href="#home" class="scroll-to-top"><img src="Images/arrow.png" alt="Back to top"></a>
-
-  <!-- Success Alert -->
-  <div id="successAlert" class="alert-container">
-    <div class="success-alert">
-      <div class="alert-content">
-        <div class="alert-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"></path>
-          </svg>
-        </div>
-        <div class="alert-text">
-          <p class="alert-title">Message Sent Successfully!</p>
-          <p class="alert-description">We'll get back to you soon</p>
-        </div>
-      </div>
-      <button class="alert-close" onclick="hideAlert()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- reCAPTCHA Alert -->
-  <div id="recaptchaAlert" class="recaptcha-alert">
-    <div class="recaptcha-alert-content">
-      <div class="recaptcha-alert-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-        </svg>
-      </div>
-      <div class="recaptcha-alert-text">
-        <p class="recaptcha-alert-title">Security Check Required</p>
-        <p class="recaptcha-alert-description">Please complete the reCAPTCHA verification to send your message.</p>
-      </div>
-      <button class="recaptcha-alert-close" onclick="hideRecaptchaAlert()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="script.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
-    (function() {
-      emailjs.init("lAUSVxP_kePVrqdge");
-    })();
-  </script>
 </body>
 </html>
