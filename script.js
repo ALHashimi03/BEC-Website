@@ -302,21 +302,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Tournament data
   const tournamentData = {
-    'Fudruckers Gaming Night': {
+    'Fudruckers Esports Championship 2025': {
       highlights: [
-        'Casual gaming environment',
-        'Food and drink specials',
-        'Prize giveaways',
-        'Community networking'
+        'Two-day gaming tournament',
+        'FC 25, Tekken 8, Rocket League, COD: Black Ops 6',
+        'Prize pool sponsored by Fuddruckers and NBK – Bahrain',
+        'Pop-up by Ministry of Youth Affairs',
+        'Venue: Al Liwan, Hamala',
+        'Coverage by Radio Bahrain, LocalBH, BahrainTV'
       ],
       responsibilities: [
-        'Event coordination with venue',
-        'Gaming equipment setup',
-        'Prize distribution',
-        'Community engagement',
-        'Social media coverage',
-        'Registration management'
-      ],
+        'Event planning and team coordination',
+        'Match scheduling and bracket management',
+        'On-site technical support for seamless gameplay',
+        'Match hosting and refereeing to uphold fair play',
+        'Tournament bracket setup and real-time updates',
+        'Participant registration and communication management'      ],
       photos: [
         'Images/event-photos/fudruckers-1.jpg',
         'Images/event-photos/fudruckers-2.jpg',

@@ -1756,11 +1756,14 @@ footer {
 .close-lightbox::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
+  width: 25px;
   height: 2px;
-  background-color: #fff;
+  background-color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  top: 50%;
+  left: 50%;
+  margin-left: -12.5px;  /* Half of the width */
+  margin-top: -1px;  /* Half of the height */
 }
 
 .close-lightbox::before {
@@ -1773,7 +1776,52 @@ footer {
 
 .close-lightbox:hover::before,
 .close-lightbox:hover::after {
-  background-color: #ff4747;
+  width: 30px;
+  margin-left: -15px;  /* Adjusted for hover width */
+  background-color: #ff4444;
+}
+
+/* Responsive adjustments for close button */
+@media (max-width: 768px) {
+  .close-lightbox {
+    width: 40px;
+    height: 40px;
+    top: 90px;
+    right: 30px;
+  }
+  
+  .close-lightbox::before,
+  .close-lightbox::after {
+    width: 20px;
+    margin-left: -10px;  /* Half of the width */
+  }
+  
+  .close-lightbox:hover::before,
+  .close-lightbox:hover::after {
+    width: 24px;
+    margin-left: -12px;  /* Adjusted for hover width */
+  }
+}
+
+@media (max-width: 480px) {
+  .close-lightbox {
+    width: 35px;
+    height: 35px;
+    top: 75px;
+    right: 25px;
+  }
+  
+  .close-lightbox::before,
+  .close-lightbox::after {
+    width: 18px;
+    margin-left: -9px;  /* Half of the width */
+  }
+  
+  .close-lightbox:hover::before,
+  .close-lightbox:hover::after {
+    width: 22px;
+    margin-left: -11px;  /* Adjusted for hover width */
+  }
 }
 
 .lightbox-img {
@@ -2250,8 +2298,8 @@ body.modal-open {
 /* Close button styles */
 .close-lightbox {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 100px;  /* Changed from 120px to 100px */
+  right: 40px;
   width: 50px;
   height: 50px;
   display: flex;
@@ -2271,10 +2319,14 @@ body.modal-open {
 .close-lightbox::after {
   content: '';
   position: absolute;
-  width: 24px;
+  width: 25px;
   height: 2px;
-  background-color: #fff;
-  transition: all 0.3s ease;
+  background-color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  top: 50%;
+  left: 50%;
+  margin-left: -12.5px;  /* Half of the width */
+  margin-top: -1px;  /* Half of the height */
 }
 
 .close-lightbox::before {
@@ -2285,17 +2337,54 @@ body.modal-open {
   transform: rotate(-45deg);
 }
 
-.close-lightbox:hover {
-  background: rgba(255, 71, 71, 0.9);
-  transform: rotate(90deg) scale(1.1);
-  border-color: rgba(255, 71, 71, 0.9);
-  box-shadow: 0 0 20px rgba(255, 71, 71, 0.5);
-}
-
 .close-lightbox:hover::before,
 .close-lightbox:hover::after {
-  background-color: #fff;
-  width: 28px;
+  width: 30px;
+  margin-left: -15px;  /* Adjusted for hover width */
+  background-color: #ff4444;
+}
+
+/* Responsive adjustments for close button */
+@media (max-width: 768px) {
+  .close-lightbox {
+    width: 40px;
+    height: 40px;
+    top: 90px;
+    right: 30px;
+  }
+  
+  .close-lightbox::before,
+  .close-lightbox::after {
+    width: 20px;
+    margin-left: -10px;  /* Half of the width */
+  }
+  
+  .close-lightbox:hover::before,
+  .close-lightbox:hover::after {
+    width: 24px;
+    margin-left: -12px;  /* Adjusted for hover width */
+  }
+}
+
+@media (max-width: 480px) {
+  .close-lightbox {
+    width: 35px;
+    height: 35px;
+    top: 75px;
+    right: 25px;
+  }
+  
+  .close-lightbox::before,
+  .close-lightbox::after {
+    width: 18px;
+    margin-left: -9px;  /* Half of the width */
+  }
+  
+  .close-lightbox:hover::before,
+  .close-lightbox:hover::after {
+    width: 22px;
+    margin-left: -11px;  /* Adjusted for hover width */
+  }
 }
 
 /* Lightbox Details */
@@ -2361,18 +2450,18 @@ body.modal-open {
   .close-lightbox {
     width: 40px;
     height: 40px;
-    top: 10px;
-    right: 10px;
+    top: 90px;
+    right: 30px;
   }
   
   .close-lightbox::before,
   .close-lightbox::after {
-    width: 20px;
+    width: 20px;  /* Changed from dynamic width to fixed width */
   }
   
   .close-lightbox:hover::before,
   .close-lightbox:hover::after {
-    width: 24px;
+    width: 24px;  /* Changed from dynamic width to fixed width */
   }
 }
 
@@ -2380,18 +2469,18 @@ body.modal-open {
   .close-lightbox {
     width: 35px;
     height: 35px;
-    top: 5px;
-    right: 5px;
+    top: 75px;
+    right: 25px;
   }
   
   .close-lightbox::before,
   .close-lightbox::after {
-    width: 18px;
+    width: 18px;  /* Changed from dynamic width to fixed width */
   }
   
   .close-lightbox:hover::before,
   .close-lightbox:hover::after {
-    width: 22px;
+    width: 22px;  /* Changed from dynamic width to fixed width */
   }
 }
 
