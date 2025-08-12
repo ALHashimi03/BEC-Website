@@ -1,29 +1,34 @@
-// Smooth scroll
+// Smooth scroll (only for in-page anchors, skip if href is not a hash)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(anchor.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
-    
-    // Close mobile menu if open
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (navLinks.classList.contains('active')) {
-      navLinks.classList.remove('active');
-      navToggle.classList.remove('active');
-      enableScroll();
+    const href = anchor.getAttribute('href');
+    if (href.length > 1 && document.querySelector(href)) {
+      e.preventDefault();
+      document.querySelector(href).scrollIntoView({behavior: 'smooth'});
+      // Close mobile menu if open
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        navToggle.classList.remove('active');
+        enableScroll();
+      }
     }
   });
 });
 
 // Scroll to top
 const scrollBtn = document.querySelector('.scroll-to-top');
-window.addEventListener('scroll', () => {
-  scrollBtn.style.display = window.scrollY > 100 ? 'block' : 'none';
-});
-scrollBtn.addEventListener('click', e => {
-  e.preventDefault();
-  window.scrollTo({top: 0, behavior: 'smooth'});
-});
+if (scrollBtn) {
+  scrollBtn.addEventListener('click', e => {
+    e.preventDefault();
+    if (window.location.pathname.endsWith('home.html')) {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    } else {
+      window.location.href = 'home.html';
+    }
+  });
+}
 
 // Disable scroll
 function disableScroll() {
@@ -288,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // View Details Button Functionality
 document.addEventListener('DOMContentLoaded', () => {
-  const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+  const viewDetailsButtons = document.querySelectorAll('.see-all-events-btn');
   const lightboxModal = document.querySelector('.lightbox-modal');
   const lightboxImg = document.querySelector('.lightbox-img');
   const lightboxTitle = document.querySelector('.lightbox-title');
@@ -299,157 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const responsibilitiesList = document.querySelector('.responsibilities-list');
   const closeLightbox = document.querySelector('.close-lightbox');
   let lastScrollPosition = 0;
-
-  // Tournament data
-  const tournamentData = {
-    'Fudruckers Esports Championship 2025': {
-      highlights: [
-        'Two-day gaming tournament',
-        'FC 25, Tekken 8, Rocket League, COD: Black Ops 6',
-        'Prize pool sponsored by Fuddruckers and NBK – Bahrain',
-        'Pop-up by Ministry of Youth Affairs',
-        'Venue: Al Liwan, Hamala',
-        'Coverage by Radio Bahrain, LocalBH, BahrainTV'
-      ],
-      responsibilities: [
-        'Event planning and team coordination',
-        'Match scheduling and bracket management',
-        'On-site technical support for seamless gameplay',
-        'Match hosting and refereeing to uphold fair play',
-        'Tournament bracket setup and real-time updates',
-        'Participant registration and communication management'      ],
-      photos: [
-        'Images/event-photos/fudruckers-1.jpg',
-        'Images/event-photos/fudruckers-2.jpg',
-        'Images/event-photos/fudruckers-3.jpg',
-        'Images/event-photos/fudruckers-4.jpg',
-        'Images/event-photos/fudruckers-5.jpg',
-        'Images/event-photos/fudruckers-6.jpg'
-      ]
-    },
-    'Overwatch Online Friendly Tournament': {
-      highlights: [
-        '12 Teams competed',
-        '5v5 format',
-        'Single Elimination bracket',
-        'Best of 3 matches (Final was Best of 5)'
-      ],
-      responsibilities: [
-        'Match scheduling & bracket management',
-        'Streaming',
-        'Casting & spectator management',
-        'Match hosting & refereeing',
-        'Tournament bracket setup'
-      ]
-    },
-    'BEC Online League of Legends Tournament': {
-      highlights: [
-        '8 Teams participated',
-        '5v5 format',
-        'Single Elimination',
-        'Best of 1 matches'
-      ],
-      responsibilities: [
-        'Match scheduling & bracket management',
-        'Streaming',
-        'Casting & spectator management',
-        'Match hosting & refereeing',
-        'Tournament bracket setup'
-      ]
-    },
-    'BEC Tekken 8 Friendly Online Tournament': {
-      highlights: [
-        '32 Players',
-        '1v1 format',
-        'Single Elimination bracket'
-      ],
-      responsibilities: [
-        'Match scheduling & bracket management',
-        'Streaming',
-        'Casting & spectator management',
-        'Match hosting & refereeing',
-        'Tournament bracket setup'
-      ]
-    },
-    'Reboot Valorant Tournament': {
-      highlights: [
-        '16 participating teams (80 Players)',
-        'Professional production setup',
-        'Live-streamed on Twitch',
-        'Bracket hosted on Challonge',
-        'Prize pool sponsored by local partners'
-      ],
-      responsibilities: [
-        'Event planning & team coordination',
-        'Match scheduling & bracket management',
-        'On-site tech support & streaming',
-        'Casting and spectator management',
-        'Match hosting and refereeing',
-        'Tournament bracket setup',
-        'Venue setup and equipment management',
-        'Social media content creation & result announcements'
-      ],
-      photos: [
-        'Images/event-photos/Valorant (1).png',
-        'Images/event-photos/Valorant (2).png',
-        'Images/event-photos/Valorant (3).png',
-        'Images/event-photos/Valorant (4).png',
-        'Images/event-photos/Valorant (5).png',
-        'Images/event-photos/Valorant (6).png'
-      ]
-    },
-    'Reboot Tekken 8 Tournament': {
-      highlights: [
-        '64-player bracket',
-        'Double elimination format',
-        'Matches streamed live',
-        'Prize pool sponsored by local partners'
-      ],
-      responsibilities: [
-        'Event planning & team coordination',
-        'Match scheduling & bracket management',
-        'On-site tech support & streaming',
-        'Casting and spectator management',
-        'Match hosting and refereeing',
-        'Tournament bracket setup',
-        'Venue setup and equipment management',
-        'Social media content creation & result announcements'
-      ],
-      photos: [
-        'Images/event-photos/tekken-1.png',
-        'Images/event-photos/tekken-2.png',
-        'Images/event-photos/tekken-3.png',
-        'Images/event-photos/tekken-4.png',
-        'Images/event-photos/tekken-5.png',
-        'Images/event-photos/tekken-6.png'
-      ]
-    },
-    'Zain E-sports Marvel Rivals Tournament': {
-      highlights: [
-        '16 participating teams',
-        'Professional production setup',
-        'Live-streamed on Twitch',
-        'Bracket hosted on Challonge',
-        'Prize pool sponsored by Zain E-sports'
-      ],
-      responsibilities: [
-        'Event planning & team coordination',
-        'Match scheduling & bracket management',
-        'On-site tech support & streaming',
-        'Casting and spectator management',
-        'Match hosting and refereeing',
-        'Tournament bracket setup'
-      ],
-      photos: [
-        'Images/event-photos/marvel-1.png',
-        'Images/event-photos/marvel-2.png',
-        'Images/event-photos/marvel-3.png',
-        'Images/event-photos/marvel-4.png',
-        'Images/event-photos/marvel-5.png',
-        'Images/event-photos/marvel-6.png'
-      ]
-    }
-  };
 
   viewDetailsButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -541,3 +395,191 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Image Lightbox for Event Images with Arrow Navigation
+(function() {
+  var images = [];
+  var currentIndex = 0;
+  function showLightbox(src, alt) {
+    // Find the parent event card of the clicked image
+    var allImgs = Array.from(document.querySelectorAll('.expandable-img'));
+    var clickedImg = allImgs.find(img => img.src === src);
+    var eventCard = clickedImg.closest('.event-card-modern');
+    // Only select images within this event card's gallery
+    images = Array.from(eventCard.querySelectorAll('.expandable-img'));
+    currentIndex = images.findIndex(img => img.src === src);
+    var lightbox = document.getElementById('img-lightbox');
+    var content = document.getElementById('img-lightbox-content');
+    content.src = src;
+    content.alt = alt || '';
+    lightbox.classList.add('show');
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    updateArrows();
+  }
+  function hideLightbox() {
+    var lightbox = document.getElementById('img-lightbox');
+    lightbox.classList.remove('show');
+    lightbox.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function showImageAt(idx) {
+    if (idx < 0 || idx >= images.length) return;
+    currentIndex = idx;
+    var img = images[currentIndex];
+    var content = document.getElementById('img-lightbox-content');
+    content.src = img.src;
+    content.alt = img.alt || '';
+    updateArrows();
+  }
+  function updateArrows() {
+    document.getElementById('img-lightbox-arrow-left').style.display = (currentIndex > 0) ? 'flex' : 'none';
+    document.getElementById('img-lightbox-arrow-right').style.display = (currentIndex < images.length - 1) ? 'flex' : 'none';
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.expandable-img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        showLightbox(this.src, this.alt);
+      });
+    });
+    document.getElementById('img-lightbox-close').addEventListener('click', hideLightbox);
+    document.getElementById('img-lightbox').addEventListener('click', function(e) {
+      if (e.target === this) hideLightbox();
+    });
+    document.getElementById('img-lightbox-arrow-left').addEventListener('click', function(e) {
+      e.stopPropagation();
+      showImageAt(currentIndex - 1);
+    });
+    document.getElementById('img-lightbox-arrow-right').addEventListener('click', function(e) {
+      e.stopPropagation();
+      showImageAt(currentIndex + 1);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (document.getElementById('img-lightbox').classList.contains('show')) {
+        if (e.key === 'Escape') hideLightbox();
+        if (e.key === 'ArrowLeft') showImageAt(currentIndex - 1);
+        if (e.key === 'ArrowRight') showImageAt(currentIndex + 1);
+      }
+    });
+  });
+})();
+
+// Event data for dynamic rendering
+const eventsData = [
+  {
+    title: "Comicon 2025",
+    date: "May 2-3, 2025",
+    location: "Bahrain International Circuit",
+    type: "community",
+    image: "Images/covers/COMICON_2025.webp",
+    description: "A celebration of gaming, anime, and pop culture! Featuring cosplay competitions, gaming zones, special guests, live performances, and more.",
+  },
+  {
+    title: "Fudruckers Esports Championship 2025",
+    date: "April 25-26, 2025",
+    location: "Al Liwan, Hamala",
+    type: "tournament",
+    image: "Images/covers/FUDDRUCKERS_2025.webp",
+    description: "A two-day gaming extravaganza featuring EA Sports FC 25, Tekken 8, Rocket League, and Call of Duty: Black Ops 6.",
+  },
+  {
+    title: "Zain E-sports Marvel Rivals Tournament",
+    date: "February 21-23, 2025",
+    location: "Zain E-sports Lab, Zain Tower",
+    type: "tournament",
+    image: "Images/covers/ZAIN_MARVELRIVALS.webp",
+    description: "A collaboration between Zain E-sports, Teal Flamingo, and BEC for a 6v6 competitive Marvel Rivals tournament.",
+  },
+  {
+    title: "Reboot Tekken 8 Tournament",
+    date: "January 25, 2025",
+    location: "Reboot Coding Institute",
+    type: "tournament",
+    image: "Images/covers/REBOOT_TEKKEN8.webp",
+    description: "A LAN tournament for Tekken 8 players to compete in a community-focused, hype-filled environment.",
+  },
+  {
+    title: "Reboot Valorant Tournament",
+    date: "October 17-19, 2024",
+    location: "Reboot Coding Institute",
+    type: "tournament",
+    image: "Images/covers/REBOOT_VALRORANT.webp",
+    description: "A 5v5 competitive Valorant tournament with 16 participating teams. Professional production setup with live streaming.",
+  },
+  {
+    title: "BEC Tekken 8 Friendly Online Tournament",
+    date: "September 26, 2024",
+    location: "Online via Discord",
+    type: "tournament",
+    image: "Images/covers/BEC_TEKKEN8.webp",
+    description: "A high-energy 1v1 showdown where 32 fighters clashed in this Tekken 8 friendly tournament.",
+  },
+  {
+    title: "BEC Online League of Legends Tournament",
+    date: "August 29, 2024",
+    location: "Online via Discord",
+    type: "tournament",
+    image: "Images/covers/BEC_LOL.webp",
+    description: "An intense battle of strategy and teamwork, our League of Legends tournament brought 8 skilled teams together in a one-day online event.",
+  },
+  {
+    title: "BEC Overwatch Online Friendly Tournament",
+    date: "July 26-27, 2024",
+    location: "Online via Discord",
+    type: "tournament",
+    image: "Images/covers/BEC_OW.webp",
+    description: "Bahrain Esports Community's first-ever tournament! This event marked the beginning of our journey.",
+  },
+  // Add more events as needed, including workshops
+];
+
+function renderEvents(filter = "all", search = "") {
+  const grid = document.getElementById("events-grid");
+  if (!grid) return;
+  let filtered = eventsData.filter(ev =>
+    (filter === "all" || ev.type === filter) &&
+    (ev.title.toLowerCase().includes(search) ||
+     ev.location.toLowerCase().includes(search) ||
+     ev.description.toLowerCase().includes(search))
+  );
+  grid.innerHTML = filtered.length ? filtered.map(ev => `
+    <article class="event-card-modern">
+      <div class="event-card-header">
+        <img class="event-cover" src="${ev.image}" alt="${ev.title} Cover">
+      </div>
+      <div class="event-card-header-info">
+        <h3 class="event-title">${ev.title}</h3>
+        <div class="event-meta">
+          <span class="event-date"><i class="fa-regular fa-calendar"></i> ${ev.date}</span>
+          <span class="event-location"><i class="fa-solid fa-location-dot"></i> ${ev.location}</span>
+        </div>
+      </div>
+      <div class="event-card-body">
+        <p class="event-description">${ev.description}</p>
+        <a href="events/${ev.title.replace(/[^a-zA-Z0-9]/g, '_')}.html" class="see-all-events-btn">View Details</a>
+      </div>
+    </article>
+  `).join("") : '<div style="grid-column:1/-1;text-align:center;color:#888;font-size:1.2rem;">No events found.</div>';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  renderEvents();
+  const searchInput = document.getElementById("event-search");
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  let currentFilter = "all";
+  let currentSearch = "";
+  searchInput.addEventListener("input", function(e) {
+    currentSearch = e.target.value.toLowerCase();
+    renderEvents(currentFilter, currentSearch);
+  });
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentFilter = btn.getAttribute("data-filter");
+      renderEvents(currentFilter, currentSearch);
+    });
+  });
+});
+
+// Hero video removed; no sizing script needed
