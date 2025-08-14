@@ -1791,6 +1791,7 @@ footer {
   margin-bottom: 2.5rem;
   justify-content: center;
 }
+
 #event-search {
   padding: 0.7em 1.2em;
   font-size: 1.1rem;
@@ -1801,13 +1802,18 @@ footer {
   outline: none;
   transition: border 0.2s;
 }
+
 #event-search:focus {
   border: 1.5px solid #ff4747;
 }
+
 .event-filters {
   display: flex;
   gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 .filter-btn {
   background: #fafbfc;
   color: #232323;
@@ -1818,11 +1824,63 @@ footer {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
+  white-space: nowrap;
+  min-width: fit-content;
+  box-sizing: border-box;
 }
+
 .filter-btn.active, .filter-btn:hover {
   background: #ff4747;
   color: #fff;
   border: 1.5px solid #ff4747;
+}
+
+/* Responsive design for events controls */
+@media (max-width: 768px) {
+  .events-controls {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  #event-search {
+    min-width: auto;
+    width: 100%;
+    max-width: none;
+  }
+  
+  .event-filters {
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .filter-btn {
+    padding: 0.5em 1em;
+    font-size: 0.9rem;
+    flex: 1 1 auto;
+    min-width: 120px;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .events-controls {
+    gap: 0.8rem;
+  }
+  
+  .event-filters {
+    gap: 0.4rem;
+    justify-content: center;
+  }
+  
+  .filter-btn {
+    padding: 0.4em 0.8em;
+    font-size: 0.85rem;
+    min-width: 100px;
+    flex: 1 1 auto;
+  }
 }
 .events-grid {
   display: grid;
