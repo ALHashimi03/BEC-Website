@@ -208,8 +208,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     grecaptcha.reset();
                 })
                 .catch(function(error) {
-                    console.log('FAILED...', error);
-                    alert('Failed to send message. Please try again later.');
+                    console.error('EmailJS error:', error);
+                    if (error && error.status === 200) {
+                        // If the error status indicates success, show success alert
+                        document.getElementById('successAlert').style.display = 'flex';
+                    } else {
+                        // Otherwise, show failure alert
+                        alert('Failed to send message. Please try again later.');
+                    }
                 })
                 .finally(function() {
                     // Reset button state
