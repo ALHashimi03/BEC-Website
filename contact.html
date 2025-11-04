@@ -2,115 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | BPEC Support</title>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/8/80/Esports_icon.svg" />
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background: #0a0a0a;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .contact-container {
-      background: #151515;
-      padding: 30px 40px;
-      border-radius: 16px;
-      max-width: 420px;
-      width: 90%;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-    }
-
-    h1 {
-      text-align: center;
-      color: #00bfff;
-      margin-bottom: 20px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    input, textarea {
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      background: #222;
-      color: white;
-      font-size: 14px;
-      resize: none;
-    }
-
-    textarea {
-      height: 100px;
-    }
-
-    button {
-      background: #00bfff;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.2s ease-in-out;
-    }
-
-    button:hover {
-      background: #008fcc;
-    }
-
-    .success, .error {
-      text-align: center;
-      margin-top: 10px;
-      font-weight: 500;
-    }
-
-    .success {
-      color: #00ff88;
-    }
-
-    .error {
-      color: #ff4444;
-    }
-
-    .g-recaptcha {
-      margin: 10px 0;
-      display: flex;
-      justify-content: center;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Bahrain Esports Community</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="Images/Logo white gradient.png" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <header>
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <img src="Images/BEC_LOGO.webp" alt="Bahrain Esports Logo">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="partners.html">Partners & Collaborators</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="contact-container">
-    <h1>Contact Support</h1>
-    <form id="contactForm">
-      <input type="text" id="name" name="name" placeholder="Your Name" required />
-      <input type="email" id="email" name="email" placeholder="Your Email" required />
-      <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-      <div class="g-recaptcha" data-sitekey="6Ld5FiMrAAAAAFl68Zd2L-8nO2Nrj_seB1u7cw6J"></div>
-      <button type="submit">Send Message</button>
-      <div id="responseMsg"></div>
-    </form>
-  </div>
+  <main style="padding-top:clamp(80px, 12vw, 120px);">
+    <section id="contact" class="section contact">
+      <div class="section-title-container">
+        <h2 class="section-title">Contact Us</h2>
+      </div>
 
-  <!-- reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <!-- EmailJS SDK -->
+      <div class="contact-form-container">
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" class="form-control" placeholder="Enter your message" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="6Ld5FiMrAAAAAFl68Zd2L-8nO2Nrj_seB1u7cw6J"></div>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+            <div id="responseMsg" style="margin-top:10px; text-align:center;"></div>
+          </form>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <p>Or email us directly at: <a href="mailto:bahrainesportscommunity@gmail.com">bahrainesportscommunity@gmail.com</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo-section">
+          <img src="Images/BEC_LOGO.webp" alt="BEC Logo" class="footer-logo">
+          <p class="footer-mission">Empowering Bahrain's gaming community through competitive esports and inclusive events.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="partners.html">Partners & Collaborators</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="https://discord.gg/6ttMjTkfcu" class="discord" target="_blank" aria-label="Discord">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515..."></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/esportsco_bh/" class="instagram" target="_blank" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163..."></path></svg>
+            </a>
+            <a href="https://www.twitch.tv/esportsco_bh/about" class="twitch" target="_blank" aria-label="Twitch">
+              <svg viewBox="0 0 24 24"><path d="M11.571 4.714..."></path></svg>
+            </a>
+            <a href="https://www.youtube.com/@BahrainEsports" class="youtube" target="_blank" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186..."></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© <script>document.write(new Date().getFullYear())</script> Bahrain Esports Community. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <script>
-    // === CONFIG ===
-    const RECAPTCHA_SITE_KEY = '6Ld5FiMrAAAAAFl68Zd2L-8nO2Nrj_seB1u7cw6J';
+    // === CONFIG (no backend required) ===
     const EMAILJS_SERVICE_ID = 'BEC_Web_support';
     const EMAILJS_TEMPLATE_ID = 'template_poeh22h';
     const EMAILJS_PUBLIC_KEY = 'lAUSVxP_kePVrqdge';
@@ -119,16 +123,15 @@
       emailjs.init(EMAILJS_PUBLIC_KEY);
     })();
 
-    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-
       const responseMsg = document.getElementById('responseMsg');
       responseMsg.textContent = '';
-      const recaptchaResponse = grecaptcha.getResponse();
 
+      const recaptchaResponse = grecaptcha.getResponse();
       if (!recaptchaResponse) {
-        responseMsg.textContent = '⚠️ Please verify you are human.';
-        responseMsg.className = 'error';
+        responseMsg.textContent = '⚠️ Please verify that you are not a robot.';
+        responseMsg.style.color = '#ff4444';
         return;
       }
 
@@ -141,13 +144,13 @@
       try {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
         responseMsg.textContent = '✅ Message sent successfully!';
-        responseMsg.className = 'success';
+        responseMsg.style.color = '#00ff88';
         document.getElementById('contactForm').reset();
         grecaptcha.reset();
       } catch (error) {
-        console.error('EmailJS Error:', error);
-        responseMsg.textContent = '❌ Failed to send message. Try again later.';
-        responseMsg.className = 'error';
+        console.error(error);
+        responseMsg.textContent = '❌ Failed to send message. Please try again later.';
+        responseMsg.style.color = '#ff4444';
       }
     });
   </script>
