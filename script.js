@@ -473,10 +473,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // Event data for dynamic rendering
 const eventsData = [
   {
-    title: "BPEC at Orientation Week 2025",
-    date: "September 7-9, 2025",
-    location: " Bahrain Polytechnic, Campus A – Hall 12",
-    type: "Workshop",
+  title: "BPEC at Orientation Week 2025",
+  date: "September 7-9, 2025",
+  location: " Bahrain Polytechnic, Campus A – Hall 12",
+  type: "workshop",
     image: "Images/covers/BPEC_Orientation_Week_2025.png",
     description: "Welcoming new and returning students to explore the exciting world of gaming and esports at Bahrain Polytechnic.",
   },
