@@ -154,6 +154,43 @@
       }
     });
   </script>
+  <!-- Small inline hamburger toggle for pages that may not load the full site script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (!navToggle || !navLinks) return;
+
+        function disableScroll() { document.body.style.overflow = 'hidden'; }
+        function enableScroll() { document.body.style.overflow = ''; }
+
+        navToggle.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          navToggle.classList.toggle('active');
+          navLinks.classList.toggle('active');
+          if (navLinks.classList.contains('active')) disableScroll(); else enableScroll();
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!navToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            enableScroll();
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            enableScroll();
+          }
+        });
+      } catch (err) {
+        console.error('Nav toggle error:', err);
+      }
+    });
+  </script>
 </body>
 </html>
-
