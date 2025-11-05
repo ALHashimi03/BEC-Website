@@ -148,8 +148,10 @@
         document.getElementById('contactForm').reset();
         grecaptcha.reset();
       } catch (error) {
-        console.error(error);
-        responseMsg.textContent = '❌ Failed to send message. Please try again later.';
+        console.error('EmailJS send error:', error);
+        // Show more helpful error text to the user for diagnosis
+        const errText = (error && (error.text || error.message || error.statusText)) ? (error.text || error.message || error.statusText) : '';
+        responseMsg.textContent = '❌ Failed to send message. ' + (errText ? ('Error: ' + errText) : 'Please try again later.');
         responseMsg.style.color = '#ff4444';
       }
     });
