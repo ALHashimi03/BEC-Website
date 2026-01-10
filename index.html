@@ -32,7 +32,7 @@
 
     <!-- Hero Section -->
 
-    <section id="home-hero" style="position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#181818; overflow:hidden; padding-top:clamp(80px, 12vw, 120px);">
+    <section id="home-hero" style="position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; padding-top:clamp(80px, 12vw, 120px); background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('Images/Hero.webp') center/cover no-repeat; background-color:#181818;">
       <!-- Animated Background Circles -->
       <div style="position:absolute; inset:0; opacity:0.13; pointer-events:none; z-index:0;">
         <div style="position:absolute; top:10%; left:8%; width:320px; height:320px; background:#ff4747; border-radius:50%; filter:blur(80px); animation:pulse 2.5s infinite alternate;"></div>
@@ -53,11 +53,13 @@
         </div>
       </div>
       <style>
+        #home-hero{ background-repeat:no-repeat; background-size:cover; background-position:center center; }
         @keyframes pulse { 0%{opacity:0.7;} 100%{opacity:1;} }
         @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(16px);} }
         @media (max-width:600px){
           #home-hero h1{font-size:2.1rem;}
           #home-hero p{font-size:1rem;}
+          #home-hero{ background-position:top center; background-attachment:scroll; }
         }
       </style>
     </section>
@@ -67,13 +69,13 @@
         <div class="stats-grid modern">
           <div class="stat-card modern">
             <div class="stat-content">
-              <div class="stat-number">10<span class="stat-plus">+</span></div>
+              <div class="stat-number">11<span class="stat-plus">+</span></div>
               <div class="stat-label">Events Hosted</div>
             </div>
           </div>
           <div class="stat-card modern">
             <div class="stat-content">
-              <div class="stat-number">1000<span class="stat-plus">+</span></div>
+              <div class="stat-number">1500<span class="stat-plus">+</span></div>
               <div class="stat-label">Tournament Participants</div>
             </div>
           </div>
@@ -91,7 +93,7 @@
       <div class="container about-preview-flex">
         <div class="about-preview-text">
           <h2>Who We Are</h2>
-          <p>Bahrain Esports Community (BEC) is dedicated to empowering gamers, fostering talent, and building a vibrant, inclusive esports scene in Bahrain. We host top-tier tournaments, community meetups, and educational workshops to help every gamer thrive.</p>
+          <p>Bahrain Esports Community (BEC) is dedicated to empowering gamers, fostering talent, and building a vibrant, inclusive esports scene in Bahrain. </p>
           <a href="about.html" class="about-cta">Learn More About Us</a>
         </div>
         <div class="about-preview-img">

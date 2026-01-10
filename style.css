@@ -601,8 +601,11 @@
 }
 
 .identity-text h2 {
-  font-family: 'Poppins', sans-serif !important;
-  font-size: clamp(1.5rem, 2vw, 2rem) !important;
+  font-family: 'Poppins', 'Orbitron', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem) !important;
   margin-bottom: clamp(0.5em, 1vw, 1em) !important;
   color: #212529 !important;
 }
@@ -629,10 +632,23 @@
 }
 
 .text-card h2 {
-  font-family: 'Poppins', sans-serif !important;
-  font-size: clamp(1.5rem, 2vw, 2rem) !important;
+  font-family: 'Poppins', 'Orbitron', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem) !important;
   color: #212529 !important;
   margin-bottom: clamp(0.5em, 1vw, 1em) !important;
+}
+
+.subsection-title {
+  font-family: 'Poppins', 'Orbitron', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem) !important;
+  color: #212529 !important;
+  margin-bottom: clamp(0.75em, 1vw, 1em) !important;
 }
 
 .text-card p, 
@@ -640,7 +656,7 @@
   font-size: clamp(1rem, 1.1vw, 1.2rem) !important;
   color: #212529 !important;
   line-height: 1.6 !important;
-}
+} 
 
 .text-card ul { 
   list-style: disc inside !important;
@@ -667,7 +683,8 @@
   }
   
   .identity-text h2,
-  .text-card h2 {
+  .text-card h2,
+  .subsection-title {
     font-size: clamp(1.4rem, 1.8vw, 1.8rem) !important;
   }
   
@@ -676,7 +693,7 @@
   .text-card ul {
     font-size: clamp(0.9rem, 1vw, 1.1rem) !important;
   }
-}
+} 
 
 @media (min-width: 1400px) {
   .identity-card, 
@@ -686,7 +703,8 @@
   }
 
   .identity-text h2,
-  .text-card h2 {
+  .text-card h2,
+  .subsection-title {
     font-size: clamp(1.6rem, 2.2vw, 2.2rem) !important;
   }
 
@@ -1937,6 +1955,8 @@ footer {
   color: #ff4747;
   margin-bottom: 0.3rem;
   font-size: 1.2rem;
+  font-weight: 700 !important;
+  font-family: 'Poppins', 'Orbitron', Arial, sans-serif !important;
 }
 .event-card-header-info .event-meta {
   color: #232323;
