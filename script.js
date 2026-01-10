@@ -472,23 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Event data for dynamic rendering
 const eventsData = [
-  {
-  title: "Darkness Gaming Center Friendly Valorant Tournament",
-  date: "Nov 28, 2025",
-  location: "  Darkness Gaming Center – A’ali",
-  type: "tournament",
-    image: "Images/covers/Darkness_Valorant_Nov_2025.png",
-    description: "An exciting friendly Valorant showdown in collaboration with Darkness Gaming Center and Bahrain Esports Community.",
-  },
-  {
-  title: "PolyWonder Land 2025",
-  date: "27th November 2025",
-  location: " Bahrain Polytechnic, Campus A – In front of Building 12",
-  type: "workshop",
-    image: "Images/covers/BPEC_Orientation_Week_20252.png",
-    description: "Bringing the carnival to Bahrain Polytechnic campus with a touch of gaming and excitement!",
-  },
-  {
+   {
   title: "BPEC at Orientation Week 2025",
   date: "September 7-9, 2025",
   location: " Bahrain Polytechnic, Campus A – Hall 12",
