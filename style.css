@@ -1,11 +1,22 @@
+/* === CSS VARIABLES === */
+:root {
+  --accent: #ff4747;
+  --dark-bg: #212529;
+  --nav-bg: rgba(17, 17, 17, 0.95);
+  --footer-bg: #0a0a0a;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
-  
-  body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(to right, #ffffff, #949393);
     color: #000;
@@ -145,6 +156,14 @@
   .nav-links li a:hover::before {
     width: 80%;
   }
+
+  .nav-links li a.nav-active {
+    color: #ff4747;
+  }
+
+  .nav-links li a.nav-active::before {
+    width: 80%;
+  }
   
   /* Hamburger Menu */
   .nav-toggle {
@@ -279,62 +298,6 @@
 
     .nav-links li a::before {
       display: none;
-    }
-
-    /* Hamburger Menu */
-    .nav-toggle {
-      display: block;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 1000;
-      width: 30px;
-      height: 30px;
-      position: relative;
-      margin-right: 10px;
-    }
-
-    .hamburger,
-    .hamburger::before,
-    .hamburger::after {
-      content: '';
-      display: block;
-      background: #fff;
-      height: 2px;
-      width: 100%;
-      border-radius: 3px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: absolute;
-    }
-
-    .hamburger {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .hamburger::before {
-      top: -8px;
-    }
-
-    .hamburger::after {
-      bottom: -8px;
-    }
-
-    /* Hamburger Animation */
-    .nav-toggle.active .hamburger {
-      background: transparent;
-    }
-
-    .nav-toggle.active .hamburger::before {
-      transform: rotate(45deg);
-      top: 0;
-    }
-
-    .nav-toggle.active .hamburger::after {
-      transform: rotate(-45deg);
-      bottom: 0;
-      top: 0;
     }
 
     /* Prevent body scroll when menu is open */
@@ -668,7 +631,7 @@
 }
 
 .text-card ul li strong {
-  color: var(--dark-bg) !important;
+  color: var(--dark-bg, #212529) !important;
 }
 
 /* Updated responsive styles with !important */
@@ -1516,65 +1479,6 @@ footer {
   text-shadow: none;
 }
 
-.stats-section.modern {
-  background: linear-gradient(90deg, #f7f7fa 0%, #e3e3e3 100%);
-  padding: 3.5rem 0 3rem 0;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-}
-.stats-grid.modern {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-  max-width: 900px;
-  margin: 0 auto;
-}
-.stat-card.modern {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(60,60,60,0.10), 0 1.5px 6px 0 rgba(60,60,60,0.08);
-  border: 1.5px solid #ff4747;
-  padding: 2.2rem 2.5rem 1.5rem 2.5rem;
-  min-width: 180px;
-  min-height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
-  position: relative;
-  overflow: hidden;
-}
-.stat-card.modern:hover {
-  transform: scale(1.04) translateY(-4px);
-  box-shadow: 0 8px 32px rgba(255,71,71,0.10), 0 1.5px 6px 0 rgba(60,60,60,0.08);
-  border-color: #ff4747;
-}
-.stat-number {
-  font-size: 2.6rem;
-  font-weight: 800;
-  color: #ff4747;
-  font-family: 'Orbitron', 'Poppins', Arial, sans-serif;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.3em;
-  text-shadow: none;
-  background: none;
-}
-.stat-plus {
-  font-size: 1.3rem;
-  vertical-align: super;
-  color: #232323;
-  margin-left: 2px;
-  text-shadow: none;
-}
-.stat-label {
-  font-size: 1.1rem;
-  color: #232323;
-  font-weight: 500;
-  text-align: center;
-  letter-spacing: 0.01em;
-  text-shadow: none;
-}
-
 .about-preview-section {
   background: #fff;
   padding: 4rem 0 3rem 0;
@@ -1633,6 +1537,7 @@ footer {
 .events-preview-section {
   background: #f7f7fa;
   padding: 4rem 0 3rem 0;
+  text-align: center;
 }
 .events-preview-grid {
   display: flex;
@@ -2132,8 +2037,9 @@ footer {
 }
 
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
   margin: 2rem 0;
 }
@@ -2145,6 +2051,9 @@ footer {
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   text-align: center;
   border: 1px solid #e9ecef;
+  flex: 1 1 240px;
+  max-width: 320px;
+  min-width: 220px;
 }
 
 .stat-number {
