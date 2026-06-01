@@ -247,7 +247,7 @@ function renderEvents(filter, search) {
       '</div>' +
       '<div class="event-card-body">' +
         '<p class="event-description">' + ev.description + '</p>' +
-        '<a href="' + prefix + 'Events/' + titleToFilename(ev.title) + '" class="see-all-events-btn">View Details</a>' +
+        '<a href="' + prefix + 'events/' + titleToFilename(ev.title) + '" class="see-all-events-btn">View Details</a>' +
       '</div>' +
     '</article>';
   }).join('');
