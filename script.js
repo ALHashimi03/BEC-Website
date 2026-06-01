@@ -205,8 +205,11 @@ function titleToFilename(title) {
 }
 
 function getRelativePrefix() {
-  var path = window.location.pathname.replace(/^\//, '');
-  return path.split('/').length > 1 ? '../' : '';
+  var path = window.location.pathname;
+  // Count directory depth: /Events/file.html has 2 slashes after domain
+  var depth = (path.match(/\//g) || []).length;
+  // If depth > 1, we're in a subdirectory, so we need ../
+  return depth > 1 ? '../' : '';
 }
 
 function renderEvents(filter, search) {
