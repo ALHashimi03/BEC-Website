@@ -97,13 +97,15 @@
   font-weight: 500;
   letter-spacing: 0.5px;
   margin-bottom: 1rem;
+  vertical-align: middle;
   transition: color 0.2s;
 }
 .ep-hero__breadcrumb:hover { color: var(--ep-accent); }
 .ep-hero__breadcrumb svg  { flex-shrink: 0; }
 
 .ep-hero__tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   background: var(--ep-accent);
   color: #fff;
   font-size: 0.68rem;
@@ -112,7 +114,7 @@
   letter-spacing: 2.5px;
   padding: 0.3em 0.85em;
   border-radius: 3px;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
   vertical-align: middle;
 }
 .ep-hero__tag--community { background: #2ea84f; }
