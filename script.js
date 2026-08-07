@@ -103,6 +103,14 @@ function onRecaptchaExpired()  { recaptchaVerified = false; }
 // Event data — add new events here
 var eventsData = [
   {
+    title: "Oasis Mall Battle of Champions",
+    date: "July 2-4, 2026",
+    location: "Oasis Mall, Juffair",
+    type: "tournament",
+    image: "Images/covers/OASIS_BATTLE_OF_CHAMPIONS.png",
+    description: "An EA FC 26 tournament that closed out the 17-day Oasis Malls Battle of Champions activation, bringing football fans, gamers, and the local esports community together at Oasis Mall.",
+  },
+  {
     title: 'Valorant Friendly Tournament',
     date: 'November 29, 2025',
     location: " | Darkness Gaming Center, A'ali",
